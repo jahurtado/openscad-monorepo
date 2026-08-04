@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv sync:*)",
+      "Bash(uv run tools/health_check.py:*)",
+      "Bash(uv run tools/check.py:*)",
+      "Bash(uv run tools/slice.py:*)",
+      "Bash(uv run tools/run_batch.py:*)",
+      "Bash(uv run tools/analyze.py:*)",
+      "Bash(uv run tools/compare.py:*)",
+      "Bash(uv run tools/render3d.py:*)",
+      "Bash(uv run tools/make_assembly.py:*)",
+      "Bash(uv run tools/center_input.py:*)",
+      "Bash(uv run tools/dxf_smoother.py:*)",
+      "Bash(uv run tools/dimsketch.py:*)",
+      "Bash(uv run tools/build.py:*)",
+      "Bash(./build.sh:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/openscad-guard.sh\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/openscad-skill-nudge.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}

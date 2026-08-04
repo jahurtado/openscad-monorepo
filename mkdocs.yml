@@ -1,0 +1,50 @@
+site_name: OpenSCAD monorepo template — Documentation
+site_description: >-
+  User guide for the 3D-printed parametric design monorepo (OpenSCAD + Claude Code):
+  structure, glossary, component modeling, iterative measurement, and the tooling.
+
+# Reuses the docs/ folder as-is (nothing is moved). The CLAUDE.md pages (agent
+# instructions, NOT user docs) live outside docs/ and are deliberately left out of the site.
+docs_dir: docs
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: blue grey
+      toggle: { icon: material/weather-night, name: Dark mode }
+    - scheme: slate
+      primary: blue grey
+      toggle: { icon: material/weather-sunny, name: Light mode }
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      # Unicode-preserving slugify, matching GitHub: internal anchors resolve the same
+      # here and on GitHub. MkDocs' default degrades them to ASCII and breaks links.
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds: { case: lower }
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+
+nav:
+  - Home: README.md
+  - Glossary (concepts): concepts.md
+  - Design rules: design-rules.md
+  - Modeling components: components.md
+  - Tools guide: tools-guide.md

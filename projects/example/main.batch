@@ -1,0 +1,8 @@
+# example — iteration sections (uv run tools/run_batch.py example)
+# The three central sections are the starting point; the ones that earn their
+# place are the off-centre planes that expose THIS part's faults.
+front                    # central elevation (XZ): floor, cavity, lid lip
+side                     # central elevation (YZ)
+holders  z=3             # mid-ledge: the four corner clips, where they hold the board up
+lip      z=6.3           # mid-lip: the overhang that actually traps the board
+joint    z=17.5          # plan where the lid rim sits inside the cavity wall

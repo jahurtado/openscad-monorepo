@@ -1,0 +1,31 @@
+# Render outputs — ephemeral per-project build/ dirs (inspection PNGs, temp STLs)
+build/
+projects/*/build/
+components/build/
+
+# Final STL deliverables (per-project prints/ + the root one) — large binaries,
+# regenerable from the .scad via tools/build.py, so not versioned.
+prints/
+projects/*/prints/
+components/prints/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal scratch / drafts (not versioned)
+drafts/
+tmp/
+
+# MkDocs static site (regenerable: mkdocs build)
+site/

@@ -1,0 +1,25 @@
+[project]
+name = "openscad-monorepo-template-tools"
+version = "0"
+description = "Python tooling (analyze / validate / slice) for the OpenSCAD monorepo template — see tools/."
+requires-python = ">=3.10"
+dependencies = [
+    "trimesh>=4.0",
+    "manifold3d>=2.5",
+    "numpy>=1.24",
+    # trimesh DEFERS these and only fails at call time with ModuleNotFoundError
+    # (slice.py, analyze.py), so they MUST be present up front —
+    # health_check.py imports them eagerly to catch a broken env before designing.
+    "scipy>=1.10",   # graph traversal behind mesh.section()
+    "networkx>=3.0", # path/vertex graphs for closed-loop extraction
+    "rtree>=1.0",    # enclosure tree (which loops are holes inside which)
+    "shapely>=2.0",  # polygon area/perimeter/centroid for hole classification
+    # plotting: slice.py (the dimensioned _plot), compare.py --plot,
+    # dimsketch.py / drawings/<name>_dims.py, and ad-hoc inspection.
+    "matplotlib>=3.7",
+]
+
+# Tooling repo, not a distributable package: uv installs the dependencies into
+# .venv but does not build/install this project itself.
+[tool.uv]
+package = false

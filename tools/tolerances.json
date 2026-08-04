@@ -1,0 +1,10 @@
+{
+  "_about": "Default gate tolerances. Distances in mm, volume in percent. One value PER DETECTOR; edit and compare.py picks it up. Pass a different file with `compare.py --tolerances other.json` (keys it omits fall back to these). `--tol`/`--vol-tol` override per run.",
+  "compare": {
+    "contour": 0.5,
+    "holes": 0.5,
+    "fillets": 0.5,
+    "extents": 0.5,
+    "volume": 1.0
+  }
+}
